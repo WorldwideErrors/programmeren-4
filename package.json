@@ -1,0 +1,26 @@
+{
+  "name": "programmeren-4",
+  "version": "1.0.0",
+  "description": "programmeren-4",
+  "main": ".js",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon node-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/WorldwideErrors/prog-4.git"
+  },
+  "author": "Jeffrey van Tillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/WorldwideErrors/prog-4/issues"
+  },
+  "homepage": "https://gitlab.com/WorldwideErrors/prog-4#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
