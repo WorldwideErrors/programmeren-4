@@ -55,6 +55,26 @@ app.get('/api/movie/:movieId', (req, res) => {
   }
 });
 
+app.post('/api/user', (req, res) => {
+  let user = req.body;
+  console.log(movie);
+  id++;
+
+  for(i = 0; i <= database.length; i++){
+    if(user == database.findIndex(i)){
+      break;
+    }else{
+      database.push(user);
+      console.log(database);
+      res.status(201).json({
+      status: 201,
+      result: user,
+      })
+    }
+  }
+  
+});
+
 app.all('*', (req, res) => {
   res.status(404).json({
     status: 404,
