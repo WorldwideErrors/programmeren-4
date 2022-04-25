@@ -55,24 +55,44 @@ app.get('/api/movie/:movieId', (req, res) => {
   }
 });
 
-app.post('/api/user', (req, res) => {
-  let user = req.body;
-  console.log(movie);
-  id++;
-
-  for(i = 0; i <= database.length; i++){
-    if(user == database.findIndex(i)){
-      break;
+app.post('/api/user/:userId', (req, res) => {
+  let email = req.body.emailAdress;
+    //Filter Database om te kijken of Email Address al bestaat (== ipv === om cijfer (int, string) problemen te voorkomen)
+    let item = database.filter((item) => item.emailAdress == email);
+    console.log(item);
+    if (item.length > 0) {
+      if (req.params.userId != item[0].ID) {
+            res.status(400).json({
+                Status: 400,
+                Message: `Someone else is already using this Email adress!`
+            })
+        } else {
+            console.log("Email is from same user, request accepted!")
+          
+            database.push(item);
+            console.log(database);
+            res.status(201).json({
+              status: 201,
+              result: item,
+            })
+        }
     }else{
-      database.push(user);
+    
+      database.push(item);
       console.log(database);
       res.status(201).json({
-      status: 201,
-      result: user,
+        status: 201,
+        result: item,
       })
     }
-  }
-  
+});
+
+app.get('api/user', (req, res) => {
+  console.log(database);
+  res.status(200).json({
+    status: 200,
+    result: database,
+  });
 });
 
 app.all('*', (req, res) => {
